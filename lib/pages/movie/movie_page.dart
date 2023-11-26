@@ -1,6 +1,6 @@
 import 'package:movie_task/all_utils.dart';
 import 'package:movie_task/pages/movie/components/favoriate_container.dart';
-import 'package:movie_task/pages/movie/components/movie_list.dart';
+import 'package:movie_task/pages/movie/components/movie_list_widget.dart';
 
 class MoviePage extends StatefulWidget {
   static const String routeName = '/MoviePage';
@@ -23,7 +23,7 @@ class _MoviePageState extends State<MoviePage> {
           FavoriateContainer(),
         ],
       ),
-      body: const MovieList(),
+      body: const MovieListWidget(),
     );
   }
 }
