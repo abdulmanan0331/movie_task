@@ -45,7 +45,7 @@ class FavoriatePage extends StatelessWidget {
                     trailing: IconButton(
                       onPressed: () {
                         provider.removeFromFavorites(movie);
-                        print('delete');
+                        EasyLoading.showInfo('Remove item from Favoriate List');
                       },
                       icon: const Icon(Icons.delete),
                     ),
