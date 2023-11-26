@@ -1,6 +1,6 @@
 import 'package:movie_task/all_utils.dart';
 import 'package:movie_task/pages/movie/components/movie_card.dart';
-import 'package:movie_task/utils/web_services/web_services.dart';
+import 'package:movie_task/utils/movie_service/movie_service.dart';
 
 class MovieList extends StatelessWidget {
   const MovieList({
@@ -10,7 +10,7 @@ class MovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<MovieModel>?>(
-      future: WebServices.apiRequest(),
+      future: MovieServices.apiRequest(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {

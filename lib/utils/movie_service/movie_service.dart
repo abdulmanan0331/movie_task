@@ -5,7 +5,7 @@ import 'package:movie_task/all_utils.dart';
 
 import 'api_constants.dart';
 
-class WebServices {
+class MovieServices {
   static Future<List<MovieModel>?> apiRequest<T>({
     Map<String, dynamic>? bodyMap,
     Map<String, dynamic>? queryParams,
