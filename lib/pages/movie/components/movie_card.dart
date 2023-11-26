@@ -18,11 +18,16 @@ class MovieCard extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CachedNetworkImage(
+              imageBuilder: (context, imageProvider) => CircleAvatar(
+                backgroundImage: imageProvider,
+                radius:
+                    84 / 2, // Set the radius of the CircleAvatar based on size
+              ),
               imageUrl:
                   'https://i0.wp.com/fanversation.com/wp-content/uploads/2021/10/MHA_WHM_Concept_KeyArt_TrailerPoster.jpeg?resize=1024%2C576&ssl=1',
               width: 60,
@@ -38,32 +43,40 @@ class MovieCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: 20.h),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        flex: 3,
+                        flex: 7,
                         child: Text(
                           movie.title,
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                       ),
-                      Expanded(
-                        child: Text(
-                          ' ${movie.releaseDate}',
-                          style: GoogleFonts.manrope(
-                            fontSize: 10,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 2.0),
+                        child: Expanded(
+                          flex: 2,
+                          child: Text(
+                            ' ${movie.releaseDate}',
+                            style: GoogleFonts.manrope(
+                              fontSize: 11,
+                            ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
-                  Text(
-                    movie.overview,
-                    textAlign: TextAlign.justify,
-                    style: GoogleFonts.manrope(
-                      fontSize: 13,
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 2.0),
+                    child: Text(
+                      movie.overview,
+                      textAlign: TextAlign.justify,
+                      style:
+                          GoogleFonts.manrope(fontSize: 12, letterSpacing: 0.3),
                     ),
                   ),
                   Container(

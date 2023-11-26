@@ -9,7 +9,6 @@ class FavoriatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: Text(
           'Favorites',
           style: GoogleFonts.manrope(fontWeight: FontWeight.w700),
