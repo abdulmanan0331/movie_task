@@ -8,6 +8,5 @@ export 'package:google_fonts/google_fonts.dart';
 export 'package:movie_task/model/movie.dart';
 export 'package:movie_task/pages/movie/movie_page.dart';
 export 'package:movie_task/provider/movie_provider.dart';
-export 'package:movie_task/utils/app_theme.dart';
 export 'package:movie_task/utils/routes.dart';
 export 'package:provider/provider.dart';

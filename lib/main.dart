@@ -26,7 +26,7 @@ class Movie extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Movie',
-              theme: AppTheme.buildTheme(),
+              theme: ThemeData(),
               initialRoute: MoviePage.routeName,
               routes: routes,
               builder: EasyLoading.init(),
