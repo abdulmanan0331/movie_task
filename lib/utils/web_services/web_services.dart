@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
+import 'package:movie_task/all_utils.dart';
 
 import 'api_constants.dart';
 
 class WebServices {
-  static Future<T?> apiRequest<T>({
+  static Future<List<MovieModel>?> apiRequest<T>({
     Map<String, dynamic>? bodyMap,
     Map<String, dynamic>? queryParams,
     bool isPost = false,
@@ -32,19 +32,10 @@ class WebServices {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final parsedResponse = json.decode(response.body);
-        return parsedResponse as T;
-      } else if (response.statusCode == 404) {
-        EasyLoading.showInfo('Resource not found');
-        return null;
+        List<dynamic> movieList = parsedResponse['results'] ?? [];
+        return movieList.map((e) => MovieModel.fromJson(e)).toList();
       } else {
-        final bodyResponse = jsonDecode(response.body);
-        if (bodyResponse['message'] == 'Unauthorized') {
-          EasyLoading.showInfo('InValid Credential');
-        } else {
-          EasyLoading.showInfo(
-              'Request failed  ${bodyResponse['message'] ?? 'Some Thing Happen'}');
-        }
-
+        EasyLoading.showInfo(response.statusCode.toString());
         return null;
       }
     } catch (exception) {

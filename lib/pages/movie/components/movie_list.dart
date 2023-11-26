@@ -9,23 +9,19 @@ class MovieList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Map<String, dynamic>?>(
+    return FutureBuilder<List<MovieModel>?>(
       future: WebServices.apiRequest(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
-            final data = snapshot.data ?? {};
-            if (data.isEmpty) return const Text('Data Not Found');
-            List<dynamic> movieList = data['results'] ?? [];
+            final movieList = snapshot.data ?? [];
             if (movieList.isEmpty) {
               return const Text('not data found');
             }
-            final movieModel =
-                movieList.map((e) => MovieModel.fromJson(e)).toList();
             return ListView.builder(
-              itemCount: movieModel.length,
+              itemCount: movieList.length,
               itemBuilder: (context, index) {
-                final movie = movieModel[index];
+                final movie = movieList[index];
                 return MovieCard(movie: movie);
               },
             );
