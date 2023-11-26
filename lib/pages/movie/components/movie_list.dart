@@ -18,11 +18,24 @@ class MovieList extends StatelessWidget {
             if (movieList.isEmpty) {
               return const Text('not data found');
             }
+
             return ListView.builder(
               itemCount: movieList.length,
               itemBuilder: (context, index) {
                 final movie = movieList[index];
-                return MovieCard(movie: movie);
+                return Consumer<MovieProvider>(
+                  builder: (context, provider, child) {
+                    return MovieCard(
+                      movie: movie,
+                      onPressed: (ct) => _favoriateItem(ct, movie),
+                      icon: Icon(
+                        provider.favoriteItems.contains(movie)
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                      ),
+                    );
+                  },
+                );
               },
             );
           } else if (snapshot.hasError) {
@@ -34,5 +47,14 @@ class MovieList extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _favoriateItem(BuildContext context, MovieModel movie) {
+    final provider = Provider.of<MovieProvider>(context, listen: false);
+    if (provider.favoriteItems.contains(movie)) {
+      provider.removeFromFavorites(movie);
+    } else {
+      provider.addToFavorites(movie);
+    }
   }
 }

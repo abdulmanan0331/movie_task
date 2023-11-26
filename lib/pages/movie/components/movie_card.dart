@@ -1,10 +1,14 @@
-import 'package:movie_task/all_screen.dart';
 import 'package:movie_task/all_utils.dart';
 
 class MovieCard extends StatelessWidget {
+  final void Function(BuildContext context) onPressed;
+  final Widget icon;
+
   const MovieCard({
     super.key,
     required this.movie,
+    required this.onPressed,
+    required this.icon,
   });
 
   final MovieModel movie;
@@ -62,19 +66,14 @@ class MovieCard extends StatelessWidget {
                       fontSize: 13,
                     ),
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
+                  Container(
+                    alignment: Alignment.bottomRight,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    onPressed: () {
-                      context
-                          .read<MovieProvider>()
-                          .movieModel
-                          .add(const FavoriatePage());
-                    },
-                    child: Text(
-                      'Add a favorite ',
-                      style: GoogleFonts.manrope(),
+                    child: IconButton(
+                      onPressed: () => onPressed(context),
+                      icon: icon,
                     ),
                   )
                 ],

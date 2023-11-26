@@ -11,7 +11,7 @@ class FavoriateContainer extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(right: 20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(16),
       ),
       child: IconButton(
