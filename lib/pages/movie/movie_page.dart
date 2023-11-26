@@ -17,7 +17,7 @@ class _MoviePageState extends State<MoviePage> {
       appBar: AppBar(
         title: Text(
           'Movie List',
-          style: GoogleFonts.manrope(),
+          style: GoogleFonts.manrope(fontWeight: FontWeight.w700),
         ),
         actions: const [
           FavoriateContainer(),

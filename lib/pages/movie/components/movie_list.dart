@@ -53,10 +53,10 @@ class MovieList extends StatelessWidget {
     final provider = Provider.of<MovieProvider>(context, listen: false);
     if (provider.favoriteItems.contains(movie)) {
       provider.removeFromFavorites(movie);
-      EasyLoading.showInfo('Remove item from Favoriate List');
+      EasyLoading.showInfo('Remove Successfully');
     } else {
       provider.addToFavorites(movie);
-      EasyLoading.showInfo('Add item from Favoriate List');
+      EasyLoading.showInfo('Add favorite Successfully');
     }
   }
 }
